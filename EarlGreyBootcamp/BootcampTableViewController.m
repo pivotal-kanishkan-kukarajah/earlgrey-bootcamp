@@ -28,6 +28,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.tableView.accessibilityLabel = @"pivotsTable";
     self.sessionManager = [AFHTTPSessionManager new];
     [self.tableView registerClass:[UITableViewCell class]  forCellReuseIdentifier:@"cellReuse"];
     [[self loadPivotsFromDatabase] then:^id _Nullable(NSArray *pivotsArray) {
@@ -65,6 +66,13 @@
     Pivot *pivot = self.pivots[indexPath.row];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellReuse" forIndexPath:indexPath];
     cell.textLabel.text = pivot.fullName;
+    
+    //The label for each of the rows on the main screen
+    NSString *cellAccessibilityLabel = [NSString stringWithFormat:@"%d", indexPath.row];
+    cell.textLabel.accessibilityLabel = cellAccessibilityLabel;
+    NSLog(cellAccessibilityLabel);
+    
+    
     return cell;
 }
 

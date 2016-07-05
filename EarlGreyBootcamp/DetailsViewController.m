@@ -29,6 +29,7 @@
     self.jobLabel.text = self.pivot.jobTitle;
     self.projectsLabel.text = [NSString stringWithFormat:@"%@", self.pivot.projectsLeading];
     self.submitButton.layer.cornerRadius = 3;
+    self.commentField.accessibilityLabel = @"commentField";
     // Do any additional setup after loading the view from its nib.
 }
 
